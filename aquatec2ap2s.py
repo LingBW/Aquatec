@@ -72,7 +72,11 @@ except:
 else:
     try:
         print 'Check connection...'
-        ser=serial.Serial('COM16', 9600)                #   in Windows
+        try:
+            ser=serial.Serial('COM16', 9600)                #   in Windows
+        except:
+            time.sleep(60)
+            ser=serial.Serial('COM16', 9600)                #   in Windows
         print 'Open serial port.'
         # send the data
         time.sleep(1)
